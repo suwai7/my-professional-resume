@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Cloud & DevOps Engineer Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --bg: #050816;
+      --bg-alt: #0f172a;
+      --accent: #38bdf8;
+      --accent-soft: rgba(56, 189, 248, 0.15);
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --card: #020617;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #1e293b 0, #020617 45%, #000 100%);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      padding: 32px 16px;
+    }
+
+    .container {
+      max-width: 1100px;
+      width: 100%;
+      background: linear-gradient(145deg, rgba(15, 23, 42, 0.96), rgba(2, 6, 23, 0.98));
+      border-radius: 24px;
+      border: 1px solid rgba(148, 163, 184, 0.25);
+      box-shadow:
+        0 40px 120px rgba(15, 23, 42, 0.9),
+        0 0 0 1px rgba(15, 23, 42, 0.8);
+      overflow: hidden;
+      backdrop-filter: blur(18px);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: minmax(0, 2.2fr) minmax(0, 1.4fr);
+      gap: 32px;
+      padding: 32px;
+    }
+
+    @media (max-width: 900px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Left column */
+
+    .header {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+      margin-bottom: 28px;
+    }
+
+    .avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 0, #38bdf8 0, #0ea5e9 30%, #1e293b 70%, #020617 100%);
+      border: 2px solid rgba(148, 163, 184, 0.6);
+      box-shadow:
+        0 0 0 6px rgba(15, 23, 42, 0.9),
+        0 18px 40px rgba(15, 23, 42, 0.9);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .avatar::after {
+      content: "";
+      position: absolute;
+      inset: 18%;
+      border-radius: inherit;
+      border: 1px solid rgba(248, 250, 252, 0.35);
+      opacity: 0.7;
+    }
+
+    .title-block h1 {
+      font-size: 2.1rem;
+      letter-spacing: 0.03em;
+    }
+
+    .title-block h2 {
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      margin-top: 6px;
+    }
+
+    .title-block p {
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 0.95rem;
+      max-width: 520px;
+    }
+
+    .badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .badge {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.25), rgba(15, 23, 42, 0.9));
+      color: var(--text);
+    }
+
+    .section {
+      margin-bottom: 26px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    .section-header h3 {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--muted);
+    }
+
+    .section-header span {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(to right, rgba(148, 163, 184, 0.7), transparent);
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .pill {
+      font-size: 0.8rem;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      color: var(--text);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .pill-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: var(--accent);
+    }
+
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 90px minmax(0, 1fr);
+      gap: 16px;
+    }
+
+    @media (max-width: 600px) {
+      .timeline-item {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .timeline-date {
+      font-size: 0.8rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+    }
+
+    .timeline-card {
+      background: rgba(15, 23, 42, 0.9);
+      border-radius: 14px;
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      padding: 12px 14px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .timeline-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.18), transparent 55%);
+      opacity: 0.9;
+      pointer-events: none;
+    }
+
+    .timeline-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    .timeline-sub {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    .timeline-list {
+      margin-top: 8px;
+      list-style: none;
+      font-size: 0.82rem;
+      color: var(--text);
+    }
+
+    .timeline-list li {
+      margin-bottom: 4px;
+      position: relative;
+      padding-left: 14px;
+    }
+
+    .timeline-list li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-size: 0.9rem;
+    }
+
+    /* Right column */
+
+    .right {
+      background: radial-gradient(circle at top, rgba(15, 23, 42, 0.9), rgba(2, 6, 23, 0.98));
+      border-radius: 18px;
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      padding: 20px 18px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .right::before {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      background:
+        radial-gradient(circle at 0 0, rgba(56, 189, 248, 0.18), transparent 55%),
+        radial-gradient(circle at 100% 0, rgba(59, 130, 246, 0.18), transparent 55%);
+      opacity: 0.9;
+      pointer-events: none;
+    }
+
+    .contact-row {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 18px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .contact-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--muted);
+    }
+
+    .contact-value {
+      font-size: 0.9rem;
+      color: var(--text);
+    }
+
+    .contact-value a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .contact-value a:hover {
+      text-decoration: underline;
+    }
+
+    .project-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .project-card {
+      background: rgba(15, 23, 42, 0.96);
+      border-radius: 14px;
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      padding: 12px 12px;
+    }
+
+    .project-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 10px;
+    }
+
+    .project-title {
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .project-tag {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--muted);
+    }
+
+    .project-desc {
+      font-size: 0.82rem;
+      color: var(--text);
+      margin-top: 6px;
+    }
+
+    .project-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 8px;
+      font-size: 0.75rem;
+    }
+
+    .project-meta span {
+      padding: 4px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      background: rgba(15, 23, 42, 0.9);
+    }
+
+    .cta-row {
+      margin-top: 18px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 9px 14px;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      background: rgba(15, 23, 42, 0.96);
+      color: var(--text);
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #38bdf8, #0ea5e9);
+      color: #0b1120;
+      border-color: transparent;
+      box-shadow: 0 12px 30px rgba(56, 189, 248, 0.45);
+    }
+
+    .btn span.icon {
+      width: 14px;
+      height: 14px;
+      border-radius: 999px;
+      border: 1px solid currentColor;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.6rem;
+    }
+
+    footer {
+      border-top: 1px solid rgba(31, 41, 55, 0.9);
+      padding: 12px 24px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    @media (max-width: 600px) {
+      footer {
+        flex-direction: column;
+        gap: 6px;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="container">
+    <section class="grid">
+      <!-- Left column: summary, skills, experience -->
+      <div>
+        <header class="header">
+          <div class="avatar"></div>
+          <div class="title-block">
+            <h1>Suwaibou Jaiteh</h1>
+            <h2>Cloud & DevOps Engineer</h2>
+            <p>
+              Cloud & DevOps engineer with 3 years of hands‑on experience designing, automating, and
+              operating resilient infrastructure on AWS/Azure. Passionate about reliability, clean
+              automation, and observability.
+            </p>
+            <div class="badge-row">
+              <span class="badge">AWS · Azure</span>
+              <span class="badge">Kubernetes · Docker</span>
+              <span class="badge">CI/CD · GitHub Actions</span>
+            </div>
+          </div>
+        </header>
+
+        <section class="section">
+          <div class="section-header">
+            <h3>Core skills</h3>
+            <span></span>
+          </div>
+          <div class="pill-row">
+            <span class="pill"><span class="pill-dot"></span>AWS (EC2, S3, RDS, IAM)</span>
+            <span class="pill"><span class="pill-dot"></span>Azure (AKS, App Service)</span>
+            <span class="pill"><span class="pill-dot"></span>Docker & Kubernetes</span>
+            <span class="pill"><span class="pill-dot"></span>Terraform & IaC</span>
+            <span class="pill"><span class="pill-dot"></span>CI/CD (GitHub Actions, GitLab CI)</span>
+            <span class="pill"><span class="pill-dot"></span>Linux & Shell scripting</span>
+            <span class="pill"><span class="pill-dot"></span>Monitoring (Prometheus, Grafana)</span>
+            <span class="pill"><span class="pill-dot"></span>Logging (ELK, CloudWatch)</span>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-header">
+            <h3>Experience</h3>
+            <span></span>
+          </div>
+          <div class="timeline">
+            <article class="timeline-item">
+              <div class="timeline-date">2023 – Present</div>
+              <div class="timeline-card">
+                <div class="timeline-title">Cloud & DevOps Engineer</div>
+                <div class="timeline-sub">Tech Company · Remote</div>
+                <ul class="timeline-list">
+                  <li>
+                    Designed and maintained AWS infrastructure for microservices using Terraform, reducing manual
+                    changes and drift.
+                  </li>
+                  <li>
+                    Implemented GitHub Actions CI/CD pipelines with blue‑green deployments to Kubernetes, cutting
+                    release time by 60%.
+                  </li>
+                  <li>
+                    Set up centralized logging and metrics (Prometheus, Grafana, Loki) to improve incident
+                    detection and MTTR.
+                  </li>
+                </ul>
+              </div>
+            </article>
+
+            <article class="timeline-item">
+              <div class="timeline-date">2021 – 2023</div>
+              <div class="timeline-card">
+                <div class="timeline-title">Cloud Operations Engineer</div>
+                <div class="timeline-sub">Startup · On‑site</div>
+                <ul class="timeline-list">
+                  <li>
+                    Managed production workloads on AWS (EC2, RDS, S3) with strong focus on security and cost
+                    optimization.
+                  </li>
+                  <li>
+                    Automated routine operations using Python and Bash scripts, reducing manual toil for the team.
+                  </li>
+                  <li>
+                    Collaborated with developers to containerize legacy applications and migrate them to Docker/Kubernetes.
+                  </li>
+                </ul>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-header">
+            <h3>Education & certifications</h3>
+            <span></span>
+          </div>
+          <div class="pill-row">
+            <span class="pill"><span class="pill-dot"></span>B.Sc. in Finance; Minor: Accounting</span>
+            <span class="pill"><span class="pill-dot"></span>AWS Certified Cloud Practitioner</span>
+            <span class="pill"><span class="pill-dot"></span>Azure Fundamentals (AZ‑900)</span>
+          </div>
+        </section>
+      </div>
+
+      <!-- Right column: contact, projects, links -->
+      <aside class="right">
+        <div class="contact-row">
+          <div>
+            <div class="contact-label">Location</div>
+	    <div class="contact-value">Atlanta, United States</div>
+          </div>
+          <div>
+            <div class="contact-label">Email</div>
+            <div class="contact-value">
+              <a href="mailto:you@example.com">jaitehsuwai@yahoo.com</a>
+            </div>
+          </div>
+          <div>
+            <div class="contact-label">Phone</div>
+            <div class="contact-value">+1 (404) 652‑9267</div>
+          </div>
+          <div>
+            <div class="contact-label">Profiles</div>
+            <div class="contact-value">
+              <a href="https://github.com/yourusername" target="_blank">GitHub</a> ·
+              <a href="https://www.linkedin.com/in/yourusername" target="_blank">LinkedIn</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="section-header" style="margin-bottom: 10px;">
+          <h3>Highlighted projects</h3>
+          <span></span>
+        </div>
+
+        <div class="project-list">
+          <article class="project-card">
+            <div class="project-header">
+              <div class="project-title">Production‑grade Kubernetes platform</div>
+              <div class="project-tag">AWS · EKS</div>
+            </div>
+            <p class="project-desc">
+              Built a multi‑environment EKS platform with GitOps‑style deployments, automated TLS, and
+              observability stack.
+            </p>
+            <div class="project-meta">
+              <span>Terraform</span>
+              <span>Helm</span>
+              <span>Argo CD</span>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-header">
+              <div class="project-title">Serverless event pipeline</div>
+              <div class="project-tag">AWS · Lambda</div>
+            </div>
+            <p class="project-desc">
+              Designed a serverless pipeline for ingesting and processing events using API Gateway, Lambda, and
+              DynamoDB.
+            </p>
+            <div class="project-meta">
+              <span>API Gateway</span>
+              <span>DynamoDB</span>
+              <span>CloudWatch</span>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-header">
+              <div class="project-title">CI/CD for monorepo services</div>
+              <div class="project-tag">DevOps</div>
+            </div>
+            <p class="project-desc">
+              Implemented reusable CI/CD workflows for a monorepo, including automated tests, security scans, and
+              deployments.
+            </p>
+            <div class="project-meta">
+              <span>GitHub Actions</span>
+              <span>Docker</span>
+              <span>SonarQube</span>
+            </div>
+          </article>
+        </div>
+
+        <div class="cta-row">
+          <a class="btn btn-primary" href="mailto:you@example.com">
+            <span class="icon">✉</span>
+            <span>Contact me</span>
+          </a>
+          <a class="btn" href="#" target="_blank">
+            <span class="icon">↗</span>
+            <span>View full portfolio</span>
+          </a>
+        </div>
+      </aside>
+    </section>
+
+    <footer>
+      <span>Cloud & DevOps Engineer · 3 years experience</span>
+      <span>Last updated: 2026</span>
+    </footer>
+  </main>
+</body>
+</html>
+
