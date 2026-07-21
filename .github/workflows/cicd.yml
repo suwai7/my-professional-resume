@@ -7,7 +7,7 @@ on:
 permissions:
   id-token: write
   contents: read   
-       
+
 jobs:
     build:
         runs-on: ubuntu-latest
@@ -25,12 +25,12 @@ jobs:
 
             - name: Build Docker Image
               run: 
-                docker build -t 966969922248.dkr.ecr.us-east-2.amazonaws.com/my-portfolio-image:latest .
+                docker build -t 966969922248.dkr.ecr.us-east-1.amazonaws.com/my-portfolio-image:latest .
 
             - name: Scan Docker Image
               uses: aquasecurity/trivy-action@v0.36.0
               with:
-               image-ref: 966969922248.dkr.ecr.us-east-2.amazonaws.com/my-portfolio-image:latest
+               image-ref: 966969922248.dkr.ecr.us-east-1.amazonaws.com/my-portfolio-image:latest
                format: 'table'
                exit-code: '1'
                ignore-unfixed: true
@@ -49,4 +49,4 @@ jobs:
               uses: aws-actions/amazon-ecr-login@v2    
             - name: Push image
               run: 
-               docker push  966969922248.dkr.ecr.us-east-2.amazonaws.com/my-portfolio-image:latest   
+               docker push  966969922248.dkr.ecr.us-east-1.amazonaws.com/my-portfolio-image:latest  
